@@ -1,32 +1,32 @@
 # This project folder consists of projects that I wil do over the next 30 days
 
-- 1) Calculator
-- 2) Snake
-- 3) Space Invaders
-- 4) Alarm
-- 5) Brick Breaker
-- 6) Credit Card Validator 
-- 7) Tax Calculator 
-- 8) Password Generator
-- 9) Weather App
-- 10) Tic-Tac-Toe
-- 11) QR Code Generator
-- 12) Expense Tracker
-- 13) Pomodoro Timer
-- 14) Hangman
-- 15) To-Do List CLI app
-- 16) Asteroid
-- 17) Stock Price Tracker
-- 18) Music Player
-- 19) Typing Speed Test
-- 20) PDF Merger/Splitter
-- 21) Web Scraper for Headlines
-- 22) Face Detection App (OpenCV)
-- 23) AI Chatbot with OpenAI API
-- 24) Chat Application (Sockets)
-- 25) Meme Generator
-- 26) File Encryption/Decryption Tool
-- 27) URL Shortener
-- 28) Rock Paper Scissors AI Game
-- 29) Radar Sonar in pygame (Asteroid)
-- 30) Portfolio Website
+- 1 Calculator
+- 2 Snake
+- 3 Space Invaders
+- 4 Alarm
+- 5 Brick Breaker
+- 6 Credit Card Validator 
+- 7 Tax Calculator 
+- 8 Password Generator
+- 9 Weather App
+- 10 Tic-Tac-Toe
+- 11 QR Code Generator
+- 12 Expense Tracker
+- 13 Pomodoro Timer
+- 14 Hangman
+- 15 To-Do List CLI app
+- 16 Asteroid
+- 17 Stock Price Tracker
+- 18 Music Player
+- 19 Typing Speed Test
+- 20 PDF Merger/Splitter
+- 21 Web Scraper for Headlines
+- 22 Face Detection App (OpenCV)
+- 23 AI Chatbot with OpenAI API
+- 24 Chat Application (Sockets)
+- 25 Meme Generator
+- 26 File Encryption/Decryption Tool
+- 27 URL Shortener
+- 28 Rock Paper Scissors AI Game
+- 29 Radar Sonar in pygame (Asteroid)
+- 30 Portfolio Website
