@@ -1,4 +1,4 @@
-# MAKE A CALCULATOR IN PYTHON
+# MAKE A CALCULATOR IN PYTHON GUI
 
 numInput = input("Enter numbers: ")
 
