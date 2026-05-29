@@ -6,7 +6,7 @@
 - 4 Alarm
 - 5 Brick Breaker
 - 6 Credit Card Validator 
-- 7 Tax Calculator 
+- 7 Calender 
 - 8 Password Generator
 - 9 Weather App
 - 10 Tic-Tac-Toe
@@ -19,7 +19,7 @@
 - 17 Stock Price Tracker
 - 18 Music Player
 - 19 Typing Speed Test
-- 20 PDF Merger/Splitter
+- 20 Calendar GUI
 - 21 Web Scraper for Headlines
 - 22 Face Detection App (OpenCV)
 - 23 AI Chatbot with OpenAI API
