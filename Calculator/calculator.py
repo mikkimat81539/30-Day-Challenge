@@ -30,9 +30,9 @@ class Textbox(Object):
 
 	def createFont(self, surface):
 		# Create Font Object
-		createFont = pygame.font.SysFont("Arial", "20")
+		createFont = pygame.font.SysFont("Arial", 20)
 		renderFont = createFont.render(self.text, True, "black")
-		surface.blit(renderFont, (self.rect.topleft))
+		surface.blit(renderFont, (self.rect.left + 5, self.rect.top + 15))
 
 	def typeFont(self, event):
 		if event.key == pygame.K_BACKSPACE:
@@ -52,10 +52,15 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 
+		if event.type == pygame.KEYDOWN:
+			inputField.typeFont(event)
+
 	screen.fill("#32a862")
 
 	# DRAW
 	inputField.drawTextbox(screen)
+
+	inputField.createFont(screen)
 
 	pygame.display.update()
 
