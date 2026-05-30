@@ -40,8 +40,11 @@ class Textbox(Object):
 			self.text = self.text[:-1]
 
 		elif event.unicode.isdigit() or event.unicode in self.operators:
-			if len(self.text) < 17:
+			if len(self.text) < 20:
 				self.text += event.unicode
+
+			elif len(self.text) > 20:
+				self.text[:-1]
 
 # BUTTON CLASS
 class Buttons(Object):
@@ -102,10 +105,9 @@ while running:
 				try:
 					solve = eval(inputField.text)
 					inputField.text = str(solve)
+
 				except ZeroDivisionError:
 					inputField.text = "undefined"
-
-
 
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			mouse = pygame.mouse.get_pos()
