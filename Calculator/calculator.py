@@ -60,6 +60,16 @@ class Buttons(Object):
 		surface.blit(renderFont, (self.rect.left + 15, self.rect.top + 10))
 
 
+# CALCULATION CLASS
+class Calculations:
+	def buttonFunction(btn: list[int | str]) -> list[int | str]:
+		# when button is clicked that number should display on screen
+		# collision for mouse and rect
+
+		# TEST: if mouse is colliding with rect, output index
+		pass
+
+
 # TEXTBOX
 inputField = Textbox(screen_w/2, 40, 235, 50)
 
