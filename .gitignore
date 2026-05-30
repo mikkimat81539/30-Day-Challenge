@@ -1,0 +1,9 @@
+# Vim swap files
+*.swp
+*.swo
+*.swn
+*.swm
+*.swl
+
+# OS/editor files
+.DS_Store
