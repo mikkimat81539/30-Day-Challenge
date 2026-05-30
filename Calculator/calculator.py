@@ -32,14 +32,14 @@ class Textbox(Object):
 		# Create Font Object
 		createFont = pygame.font.SysFont("Arial", 20)
 		renderFont = createFont.render(self.text, True, "black")
-		surface.blit(renderFont, (self.rect.left + 5, self.rect.top + 15))
+		surface.blit(renderFont, (self.rect.right - 20, self.rect.top + 15))
 
 	def typeFont(self, event):
 		if event.key == pygame.K_BACKSPACE:
 			self.text = self.text[:-1]
 
 		elif event.unicode.isdigit():
-			if len(self.text) < 17:
+			if len(self.text) < 1:
 				self.text += event.unicode
 
 # TEXTBOX
