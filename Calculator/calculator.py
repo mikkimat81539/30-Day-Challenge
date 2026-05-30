@@ -24,7 +24,7 @@ class Textbox(Object):
 		self.text = ""
 		self.rect = pygame.Rect((0, 0), (self.width, self.height))
 		self.rect.center = (x_pos, y_pos)
-		self.operators = ["+", "-", "*", "/", "(", ")", "%", "."]
+		#self.operators = ["+", "-", "*", "/", "(", ")", "%", "."]
 
 	def drawTextbox(self, surface):
 		pygame.draw.rect(surface, "white", self.rect)
@@ -35,13 +35,13 @@ class Textbox(Object):
 		renderFont = createFont.render(self.text, True, "black")
 		surface.blit(renderFont, (self.rect.left + 5, self.rect.top + 15))
 
-	def typeFont(self, event):
-		if event.key == pygame.K_BACKSPACE:
-			self.text = self.text[:-1]
+#	def typeFont(self, event):
+#		if event.key == pygame.K_BACKSPACE:
+#			self.text = self.text[:-1]
 
-		elif event.unicode.isdigit() or event.unicode in self.operators:
-			if len(self.text) < 17:
-				self.text += event.unicode
+#		elif event.unicode.isdigit() or event.unicode in self.operators:
+#			if len(self.text) < 17:
+#				self.text += event.unicode
 
 # BUTTON CLASS
 class Buttons(Object):
@@ -93,16 +93,26 @@ while running:
 		if event.type == pygame.QUIT:
 			running = False
 
-		if event.type == pygame.KEYDOWN:
-			inputField.typeFont(event)
+#		if event.type == pygame.KEYDOWN:
+#			inputField.typeFont(event)
 
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			mouse = pygame.mouse.get_pos()
+			inputList = []
+			operators = ["/", "+", "-", "*", "%"]
 
 			for i in numList:
 				if i.rect.collidepoint(mouse):
 					if i.text == "C":
 						inputField.text = i.text[:-1]
+
+					elif i.text == "=":
+						try:
+							solve = eval(inputField.text)
+							inputField.text = str(solve)
+						except ZeroDivisionError:
+							inputField.text = "undefined"
+	
 					else:
 						inputField.text += i.text
 	
