@@ -38,8 +38,9 @@ class Textbox(Object):
 		if event.key == pygame.K_BACKSPACE:
 			self.text = self.text[:-1]
 
-		else:
-			self.text += event.unicode
+		elif event.unicode.isdigit():
+			if len(self.text) < 17:
+				self.text += event.unicode
 
 # TEXTBOX
 inputField = Textbox(screen_w/2, 40, 200, 50)
