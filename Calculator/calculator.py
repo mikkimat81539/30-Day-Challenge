@@ -101,8 +101,10 @@ while running:
 
 			for i in numList:
 				if i.rect.collidepoint(mouse):
-					inputField.text = i.text
-# Display text inside input	
+					if i.text == "C":
+						inputField.text = i.text[:-1]
+					else:
+						inputField.text += i.text
 	
 	screen.fill("#32a862")
 
