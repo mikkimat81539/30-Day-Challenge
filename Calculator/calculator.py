@@ -24,7 +24,7 @@ class Textbox(Object):
 		self.text = ""
 		self.rect = pygame.Rect((0, 0), (self.width, self.height))
 		self.rect.center = (x_pos, y_pos)
-		self.operators = ["+", "-", "*", "/", "(" ")", "%", "."]
+		self.operators = ["+", "-", "*", "/", "(", ")", "%", "."]
 
 	def drawTextbox(self, surface):
 		pygame.draw.rect(surface, "white", self.rect)
@@ -61,19 +61,19 @@ class Buttons(Object):
 
 
 # TEXTBOX
-inputField = Textbox(screen_w/2, 40, 200, 50)
+inputField = Textbox(screen_w/2, 40, 235, 50)
 
 # BUTTON
 buttonList= [
-	["C", "(", ")"],
-	[1, 2, 3],
-	[4, 5, 6],
-	[7, 8, 9],
-	[0, ".", "%"]]
+	["C", "(", ")", "/"],
+	[7, 8, 9, "*"],
+	[4, 5, 6, "-"],
+	[1, 2, 3, "+"],
+	[0, ".", "%", "="]]
 
 numList = []
 
-init_x = 20
+init_x = 60
 init_y = 90
 
 y = init_y
@@ -106,6 +106,8 @@ while running:
 	for i in numList:
 		i.drawButtons(screen)
 		i.createFont(screen)
+
+	numList[-1].color = "orange"
 
 	pygame.display.update()
 
