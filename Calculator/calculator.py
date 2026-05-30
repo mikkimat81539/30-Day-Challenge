@@ -101,9 +101,9 @@ while running:
 
 			for i in numList:
 				if i.rect.collidepoint(mouse):
-					print(i.text)
+					inputField.text = i.text
+# Display text inside input	
 	
-		
 	screen.fill("#32a862")
 
 	# DRAW
