@@ -4,7 +4,7 @@ pygame.init()
 
 # SCREEN
 screen_w = 370
-screen_h = 450
+screen_h = 390
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("Calculator")
 
@@ -24,6 +24,7 @@ class Textbox(Object):
 		self.text = ""
 		self.rect = pygame.Rect((0, 0), (self.width, self.height))
 		self.rect.center = (x_pos, y_pos)
+		self.operators = ["+", "-", "*", "/"]
 
 	def drawTextbox(self, surface):
 		pygame.draw.rect(surface, "white", self.rect)
@@ -38,9 +39,11 @@ class Textbox(Object):
 		if event.key == pygame.K_BACKSPACE:
 			self.text = self.text[:-1]
 
-		elif event.unicode.isdigit():
+		elif event.unicode.isdigit() or event.unicode in self.operators:
 			if len(self.text) < 1:
 				self.text += event.unicode
+
+# BUTTONS
 
 # TEXTBOX
 inputField = Textbox(screen_w/2, 40, 200, 50)
