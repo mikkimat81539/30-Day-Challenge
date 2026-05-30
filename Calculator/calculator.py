@@ -45,13 +45,13 @@ class Textbox(Object):
 
 # BUTTON CLASS
 class Buttons(Object):
-	def __init__(self, x_pos, y_pos, width, height, text):
-		super().__init__(x_pos, y_pos, width, height, color=None)
+	def __init__(self, x_pos, y_pos, width, height, text, color):
+		super().__init__(x_pos, y_pos, width, height, color)
 		self.rect = pygame.Rect((x_pos, y_pos), (self.width, self.height))
 		self.text = text
 
 	def drawButtons(self, surface):
-		pygame.draw.rect(surface, "white", self.rect)
+		pygame.draw.rect(surface, self.color, self.rect)
 
 	def createFont(self, surface):
 		# Create Font Object
@@ -80,7 +80,7 @@ y = init_y
 for row in buttonList:
 	x = init_x
 	for i in row:
-		buttons = Buttons(x, y, 50, 50, str(i))	
+		buttons = Buttons(x, y, 50, 50, str(i), "white")	
 		numList.append(buttons)
 		x += 60
 	y += 60
@@ -104,10 +104,11 @@ while running:
 	inputField.createFont(screen)
 
 	for i in numList:
+		if i == numList[-1]:
+			i.color = "orange"
+
 		i.drawButtons(screen)
 		i.createFont(screen)
-
-	numList[-1].color = "orange"
 
 	pygame.display.update()
 
