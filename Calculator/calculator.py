@@ -6,10 +6,11 @@ from PyQt6.QtWidgets import QMainWindow, QApplication
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.setWindowTitle("Calculator")
+		self.setWindowTitle("Calculator") # Window Title
+		self.setStyleSheet("QMainWindow { background-color: #0a0d4a; }") # Window Color
 
 app = QApplication(sys.argv)
 screen = MainWindow()
-screen.resize(450, 500)
+screen.resize(350, 400)
 screen.show()
 app.exec()
