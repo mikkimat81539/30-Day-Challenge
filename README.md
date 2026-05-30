@@ -1,4 +1,4 @@
-# This project folder consists of projects that I wil do over the next 30 days
+# This project folder consists of projects that I did over 30 days
 
 - 1 Calculator
 - 2 Snake
