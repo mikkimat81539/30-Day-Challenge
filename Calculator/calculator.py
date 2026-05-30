@@ -3,7 +3,7 @@ import pygame
 pygame.init()
 
 # SCREEN
-screen_w = 370
+screen_w = 350
 screen_h = 390
 screen = pygame.display.set_mode((screen_w, screen_h))
 pygame.display.set_caption("Calculator")
@@ -43,10 +43,46 @@ class Textbox(Object):
 			if len(self.text) < 17:
 				self.text += event.unicode
 
-# BUTTONS
+# BUTTON CLASS
+class Buttons(Object):
+	def __init__(self, x_pos, y_pos, width, height, text):
+		super().__init__(x_pos, y_pos, width, height, color=None)
+		self.rect = pygame.Rect((x_pos, y_pos), (self.width, self.height))
+		self.text = text
+
+	def drawButtons(self, surface):
+		pygame.draw.rect(surface, "white", self.rect)
+
+	def createFont(self, surface):
+		# Create Font Object
+		createFont = pygame.font.SysFont("Arial", 30)
+		renderFont = createFont.render(self.text, True, "black")
+		surface.blit(renderFont, (self.rect.topleft))
+
 
 # TEXTBOX
 inputField = Textbox(screen_w/2, 40, 200, 50)
+
+# BUTTON
+numbers = [
+	[1, 2, 3],
+	[4, 5, 6],
+	[7, 8, 9],
+	[0]]
+
+numList = []
+
+init_x = 50
+init_y = 80
+
+y = init_y
+for row in numbers:
+	x = init_x
+	for i in row:
+		buttons = Buttons(x, y, 50, 50, str(i))	
+		numList.append(buttons)
+		x += 100
+	y += 70
 
 # MAIN LOOP
 running = True
@@ -65,6 +101,10 @@ while running:
 	inputField.drawTextbox(screen)
 
 	inputField.createFont(screen)
+
+	for i in numList:
+		i.drawButtons(screen)
+		i.createFont(screen)
 
 	pygame.display.update()
 
