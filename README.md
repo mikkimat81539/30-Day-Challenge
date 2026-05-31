@@ -1,6 +1,6 @@
 # This project folder consists of projects that I did over 30 days
 
-- 1 Calculator
+- 1 Calculator : https://calculator-three-blush-17.vercel.app/
 - 2 Snake
 - 3 Space Invaders
 - 4 Alarm
