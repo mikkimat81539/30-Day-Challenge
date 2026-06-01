@@ -64,23 +64,24 @@ async def main():
 
 	def eating(food):
 		if snake.head.colliderect(food.rect):
-			snake.body.append(pygame.Rect(snake.body[-1].x, snake.body[-1].y, 20, 20))
+			snake.body.append(pygame.Rect(snake.head.x, snake.head.y, 20, 20))
 			
-			food.rect.x = random.randint(20, screen_w-20)
-			food.rect.y = random.randint(20, screen_h-20)	
+			food.rect.x = random.randint(10, screen_w-10)
+			food.rect.y = random.randint(10, screen_h-10)	
 
 	def death():
-		if snake.head.x <= 1 or snake.head.x >= screen_w - 20:
+		if snake.head.x <= 1 or snake.head.x >= screen_w:
 			print("You Lose")
 			sys.exit()
 
-		elif snake.head.y <= 1 or snake.head.y >= screen_h - 20:
+		elif snake.head.y <= 1 or snake.head.y >= screen_h:
 			print("You Lose")
 			sys.exit()
 
-		if snake.head.collidelistall(snake.body):
-			print("You Lose")
-			sys.exit()
+		for i in snake.body[1:]:
+			if snake.head.y == snake.body[0] and snake.head.y == snake.body[1]:	
+				print("You Lose")
+				sys.exit()
 
 	# MAIN LOOP
 	running = True
@@ -125,7 +126,7 @@ async def main():
 
 		pygame.display.update()
 
-		clock.tick(5)
+		clock.tick(10)
 
 		await asyncio.sleep(0) 
 
