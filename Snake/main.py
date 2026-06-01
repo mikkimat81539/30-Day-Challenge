@@ -21,17 +21,27 @@ async def main():
 			self.color = color
 
 	# PLAYER CLASS
-	class Snake(Object):
-		def __init__(self, x_pos, y_pos, width, height, color):
-			super().__init__(x_pos, y_pos, color)
-			self.width = width
-			self.height = height
-			self.color = color
-			self.rect = pygame.Rect((x_pos, y_pos), (self.width, self.height))
-			self.rect.center = (x_pos, y_pos)
+	class Snake:
+		def __init__(self):
+			self.x_pos = screen_w/2
+			self.y_pos = screen_h/2
+			self.xdir = 1
+			self.ydir = 0
 
-		def drawSnake(self, surface):
-			pygame.draw.rect(surface, self.color, self.rect)
+			self.head = pygame.Rect(self.x_pos, self.y_pos, 20, 20)
+			self.body = [pygame.Rect(self.x_pos-25, self.y_pos, 20, 20)]
+			self.dead = False 
+
+		def update(self):
+			self.body.append(self.head)
+			for i in range(len(self.body)-1):
+				self.body[i].x = self.body[i+1].x
+				self.body[i].y = self.body[i+1].y
+	
+			self.head.x += self.xdir * 25
+			self.head.y += self.ydir * 25
+			self.body.remove(self.head)
+
 
 	# FOOD CLASS
 	class Food(Object):
@@ -46,18 +56,11 @@ async def main():
 		def drawFood(self, surface):
 			pygame.draw.rect(surface, self.color, self.rect)
 
-
 	# SNAKE
-	snake = [Snake(screen_w/2, screen_h/2, 20, 20, "green"),
-	Snake(screen_w/2 + 25, screen_h/2, 20, 20, "green"), 
-	Snake(screen_w/2 + 50, screen_h/2, 20, 20, "green")]	
+	snake = Snake()
 
 	# FOOD
 	food = Food(random.randint(10, screen_w-10), random.randint(10, screen_h-10), 10, 10, "red")
-
-	# DIRECTION
-	direction = 'LEFT'	
-	change_to = direction
 
 	# MAIN LOOP
 	running = True
@@ -69,56 +72,36 @@ async def main():
 
 			if event.type == pygame.KEYDOWN:
 				if event.key == pygame.K_LEFT:
-					change_to = 'LEFT'
+					snake.xdir = -1
+					snake.ydir = 0
 
-				if event.key == pygame.K_RIGHT:
-					change_to = 'RIGHT'
+				elif event.key == pygame.K_RIGHT:
+					snake.xdir = 1
+					snake.ydir = 0
 
-				if event.key == pygame.K_UP:
-					change_to = 'UP'
+				elif event.key == pygame.K_UP:
+					snake.xdir = 0
+					snake.ydir = -1
 
-				if event.key == pygame.K_DOWN:
-					change_to = 'DOWN'	
+				elif event.key == pygame.K_DOWN:
+					snake.xdir = 0
+					snake.ydir = 1
 
 		screen.fill("black")
 
-		# MOVEMENT
-		if change_to == 'UP' and direction != 'DOWN':
-			direction = 'UP'
-
-		if change_to == 'DOWN' and direction != 'UP':
-			direction = 'DOWN'
-
-		if change_to == 'LEFT' and direction != 'RIGHT':
-			direction = 'LEFT'
-
-		if change_to == 'RIGHT' and direction != 'LEFT':
-			direction = 'RIGHT'
-
-
-		# MOVE SNAKE
-		for i in snake:
-			if direction == 'UP':
-				i.rect.y -= 10
-
-			if direction == 'DOWN':
-				i.rect.y += 10
-
-			if direction == 'LEFT':
-				i.rect.x -= 10
-
-			if direction == 'RIGHT':
-				i.rect.x += 10
+		snake.update()
 
 		# DRAW
+		pygame.draw.rect(screen, "green", snake.head)
+
+		for i in snake.body:
+			pygame.draw.rect(screen, "green", i)
+
 		food.drawFood(screen)
 
-		for i in snake:
-			i.drawSnake(screen)
-	
 		pygame.display.update()
 
-		clock.tick(20)
+		clock.tick(5)
 
 		await asyncio.sleep(0) 
 
