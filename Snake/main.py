@@ -77,12 +77,22 @@ async def main():
 	# FOOD
 	food = Food(random.randint(20, screen_w-20), random.randint(20, screen_h-20), 10, 10, "red")
 
-	def eating(food):
+	points = 0
+
+	def eating(food, screen, points):
+		createFont = pygame.font.SysFont("Arial", 20)	
+		renderFont = createFont.render(f"Points: {points}", True, "white")
+		screen.blit(renderFont, (10, 10))
+
+
 		if snake.head.colliderect(food.rect):
+			points += 1
 			snake.body.append(pygame.Rect(snake.body[-1].x, snake.body[-1].y, 20, 20))
 			
 			food.rect.x = random.randint(20, screen_w-20)
 			food.rect.y = random.randint(20, screen_h-20)	
+
+		return points
 
 	def death(screen):
 		if snake.head.x <= 1 or snake.head.x >= screen_w - 20:
@@ -125,7 +135,7 @@ async def main():
 
 		snake.update()
 		
-		eating(food)
+		points = eating(food, screen, points)
 
 		# DRAW
 		pygame.draw.rect(screen, "green", snake.head)
