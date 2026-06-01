@@ -1,5 +1,20 @@
 import pygame, asyncio, random, sys
 
+def lose(screen):
+	createFont = pygame.font.SysFont("Arial", 20)	
+
+	while True:
+		for event in pygame.event.get():
+			if event.type == pygame.QUIT:
+				sys.exit()
+        
+		screen.fill("black")
+	
+		renderFont = createFont.render("Game Over", True, "white")
+	
+		screen.blit(renderFont, (210, 200))
+		pygame.display.flip()
+
 async def main():
 	pygame.init()
 
@@ -69,23 +84,22 @@ async def main():
 			food.rect.x = random.randint(20, screen_w-20)
 			food.rect.y = random.randint(20, screen_h-20)	
 
-	def death():
+	def death(screen):
 		if snake.head.x <= 1 or snake.head.x >= screen_w - 20:
-			print("You Lose")
-			sys.exit()
+			lose(screen)
 
 		elif snake.head.y <= 1 or snake.head.y >= screen_h - 20:
-			print("You Lose")
-			sys.exit()
+			lose(screen)
 
 		if snake.head.collidelistall(snake.body):
-			print("You Lose")
-			sys.exit()
+			lose(screen)
 
 	# MAIN LOOP
 	running = True
 
 	while running:
+		death(screen)
+
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
@@ -112,8 +126,6 @@ async def main():
 		snake.update()
 		
 		eating(food)
-
-		death()
 
 		# DRAW
 		pygame.draw.rect(screen, "green", snake.head)
