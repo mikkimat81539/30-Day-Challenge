@@ -62,6 +62,13 @@ async def main():
 	# FOOD
 	food = Food(random.randint(10, screen_w-10), random.randint(10, screen_h-10), 10, 10, "red")
 
+	def eating(food):
+		if snake.head.colliderect(food.rect):
+			snake.body.append(pygame.Rect(snake.head.x, snake.head.y, 20, 20))
+			
+			food.rect.x = random.randint(10, screen_w-10)
+			food.rect.y = random.randint(10, screen_h-10)	
+
 	# MAIN LOOP
 	running = True
 
@@ -71,25 +78,27 @@ async def main():
 				running = False
 
 			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_LEFT:
+				if event.key == pygame.K_LEFT and snake.xdir != 1:
 					snake.xdir = -1
 					snake.ydir = 0
 
-				elif event.key == pygame.K_RIGHT:
+				elif event.key == pygame.K_RIGHT and snake.xdir != -1:
 					snake.xdir = 1
 					snake.ydir = 0
 
-				elif event.key == pygame.K_UP:
+				elif event.key == pygame.K_UP and snake.ydir != 1:
 					snake.xdir = 0
 					snake.ydir = -1
 
-				elif event.key == pygame.K_DOWN:
+				elif event.key == pygame.K_DOWN and snake.ydir != -1:
 					snake.xdir = 0
 					snake.ydir = 1
 
 		screen.fill("black")
 
 		snake.update()
+		
+		eating(food)
 
 		# DRAW
 		pygame.draw.rect(screen, "green", snake.head)
@@ -101,7 +110,7 @@ async def main():
 
 		pygame.display.update()
 
-		clock.tick(5)
+		clock.tick(10)
 
 		await asyncio.sleep(0) 
 
