@@ -7,7 +7,7 @@ def lose(screen):
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
-        
+
 		screen.fill("black")
 	
 		renderFont = createFont.render("Game Over", True, "white")
