@@ -2,8 +2,8 @@
 
 - 1 Calculator : https://calculator-three-blush-17.vercel.app/
 - 2 Snake : https://snake-liard-three.vercel.app/
-- 3 To-Do List
-- 4 Alarm
+- 3 Alarm
+- 4 To-Do List
 - 5 Brick Breaker
 - 6 Credit Card Validator 
 - 7 Calender 
