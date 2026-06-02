@@ -1,20 +1,5 @@
 import pygame, asyncio, random, sys
 
-def lose(screen):
-	createFont = pygame.font.SysFont("Arial", 20)	
-
-	while True:
-		for event in pygame.event.get():
-			if event.type == pygame.QUIT:
-				sys.exit()
-
-		screen.fill("black")
-	
-		renderFont = createFont.render("Game Over (Restart Browser)", True, "white")
-	
-		screen.blit(renderFont, (130, 200))
-		pygame.display.flip()
-
 async def main():
 	pygame.init()
 
@@ -94,11 +79,21 @@ async def main():
 
 		return points
 
+	def lose(screen):
+		createFont = pygame.font.SysFont("Arial", 20)	
+
+		renderFont = createFont.render("Game Over (Restart Browser)", True, "white")
+	
+		screen.blit(renderFont, (130, 200))
+		
+		sys.exit()
+
+
 	def death(screen):
 		if snake.head.x <= 1 or snake.head.x >= screen_w - 20:
 			lose(screen)
 
-		elif snake.head.y <= 1 or snake.head.y >= screen_h - 20:
+		if snake.head.y <= 1 or snake.head.y >= screen_h - 20:
 			lose(screen)
 
 		if snake.head.collidelistall(snake.body):
@@ -108,8 +103,6 @@ async def main():
 	running = True
 
 	while running:
-		death(screen)
-
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				running = False
@@ -132,6 +125,8 @@ async def main():
 					snake.ydir = 1
 
 		screen.fill("black")
+
+		death(screen)
 
 		snake.update()
 		
