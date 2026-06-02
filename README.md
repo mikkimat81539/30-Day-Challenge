@@ -2,7 +2,7 @@
 
 - 1 Calculator : https://calculator-three-blush-17.vercel.app/
 - 2 Snake : https://snake-liard-three.vercel.app/
-- 3 Space Invaders
+- 3 To-Do List
 - 4 Alarm
 - 5 Brick Breaker
 - 6 Credit Card Validator 
@@ -14,7 +14,7 @@
 - 12 Expense Tracker
 - 13 Pomodoro Timer
 - 14 Hangman
-- 15 To-Do List CLI app
+- 15 Space Invaders
 - 16 Asteroid
 - 17 Stock Price Tracker
 - 18 Music Player
