@@ -10,9 +10,9 @@ def lose(screen):
 
 		screen.fill("black")
 	
-		renderFont = createFont.render("Game Over", True, "white")
+		renderFont = createFont.render("Game Over (Restart Browser)", True, "white")
 	
-		screen.blit(renderFont, (210, 200))
+		screen.blit(renderFont, (130, 200))
 		pygame.display.flip()
 
 async def main():
