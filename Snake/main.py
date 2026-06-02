@@ -75,7 +75,7 @@ async def main():
 	snake = Snake()
 
 	# FOOD
-	food = Food(random.randint(20, screen_w-20), random.randint(20, screen_h-20), 10, 10, "red")
+	food = Food(random.randint(20, screen_w-20), random.randint(30, screen_h-30), 10, 10, "red")
 
 	points = 0
 
@@ -90,7 +90,7 @@ async def main():
 			snake.body.append(pygame.Rect(snake.body[-1].x, snake.body[-1].y, 20, 20))
 			
 			food.rect.x = random.randint(20, screen_w-20)
-			food.rect.y = random.randint(20, screen_h-20)	
+			food.rect.y = random.randint(30, screen_h-30)	
 
 		return points
 
