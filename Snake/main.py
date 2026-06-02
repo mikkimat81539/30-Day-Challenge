@@ -147,7 +147,7 @@ async def main():
 
 		pygame.display.update()
 
-		clock.tick(5)
+		clock.tick(10)
 
 		await asyncio.sleep(0) 
 
