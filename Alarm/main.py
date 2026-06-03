@@ -1,16 +1,15 @@
-# BUILD AN ALARM CLI
+# BUILD AN ALARM CLI IN 24 HOUR FORMAT
 
-# user inputs time (minutes, hours)
-# Use 24 hour format
+import datetime
 
-# 60 minutes = 1 hour
-# 0 - 23 for hours
+import datetime as dt
 
-hours = abs(int(input("Enter hours: ")))
-minutes = abs(int(input("Enter minutes: ")))
+try:
+	timeInput = input("Enter a time: ")
 
-if 0 > hours or hours > 23 or 0 > minutes or minutes > 59:
-	print("Invalid Input. Use 24 hour time format")
-else:
-	test = "{}:{}".format(hours, minutes) 
-	print(test)
+	timeFormat = dt.datetime.strptime(f'{timeInput}','%H:%M')
+
+	print(timeFormat.strftime('%H:%M'))
+
+except ValueError:
+	print("Invalid Input")
