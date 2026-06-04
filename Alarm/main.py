@@ -2,7 +2,7 @@
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QPalette, QColor
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QLabel
+from PyQt6.QtWidgets import *
 
 import sys
 
@@ -17,6 +17,8 @@ class MainWindow(QMainWindow):
 		self.setWindowTitle("Alarm")
 		self.setFixedSize(QSize(500, 600))
 		self.setStyleSheet("background-color: blue;") # Color format similar to css
+		self.container = QWidget()
+		self.setCentralWidget(self.container)
 
 	def Textbox(self):
 		# Here we will input our time
@@ -24,15 +26,18 @@ class MainWindow(QMainWindow):
 
 	def Labeling(self):
 		# Here we will put any necessary text (Ex: the colon (:), title)
-		title = QLabel("Hello")	
+		layout = QVBoxLayout(self.container)
+
+		title = QLabel("ALARM")	
 
 		font = title.font() # initialize font
 		font.setPointSize(30) # Set the size
 		title.setFont(font) # Setting the font
 		title.setStyleSheet("color: white;") # Font color		
 
-		# Set Label Widget
-		self.setCentralWidget(title)
+		title.setAlignment(Qt.AlignmentFlag.AlignHCenter) # Align Font
+
+		layout.addWidget(title)
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
