@@ -87,6 +87,7 @@ class MainWindow(QMainWindow):
 	def Buttons(self):
 		# Here will be the buttons to save alarm
 		save = QPushButton("Set Alarm")
+		save.setCursor(Qt.CursorShape.PointingHandCursor)
 		self.layout.addWidget(save, 2, 1, alignment=Qt.AlignmentFlag.AlignTop)
 
 app = QApplication([])
