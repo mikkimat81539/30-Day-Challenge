@@ -86,7 +86,8 @@ class MainWindow(QMainWindow):
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
-		pass
+		save = QPushButton("Set Alarm")
+		self.layout.addWidget(save, 2, 1, alignment=Qt.AlignmentFlag.AlignTop)
 
 app = QApplication([])
 
@@ -97,6 +98,7 @@ screen = MainWindow()
 # DRAW WIDGETS
 screen.Labeling()
 screen.Textbox()
+screen.Buttons()
 
 screen.show() # Windows are hidden by default so you have to show it.
 
