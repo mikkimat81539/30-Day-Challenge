@@ -19,7 +19,10 @@ class MainWindow(QMainWindow):
 		self.setStyleSheet("background-color: #ca82d1;") # Color format similar to css
 		self.container = QWidget()
 		self.setCentralWidget(self.container)
+
 		self.layout = QGridLayout(self.container)
+		self.layout.setContentsMargins(0, 0, 0, 0)
+		self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
 	def Textbox(self):
 		# Here we will input our time
@@ -29,14 +32,19 @@ class MainWindow(QMainWindow):
 		hourField.setMaxLength(2)
 		minuteField.setMaxLength(2)
 
-		hourField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-		minuteField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-		
 		hourField.setFixedSize(QSize(90, 50))
 		minuteField.setFixedSize(QSize(90, 50))
 
-		self.layout.addWidget(hourField, 1, 1)
-		self.layout.addWidget(minuteField, 1, 2)
+		hourField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+		minuteField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+
+		textContainer = QWidget()
+		hbox = QHBoxLayout(textContainer)
+		hbox.addWidget(hourField)
+		hbox.addWidget(minuteField)
+		hbox.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+		self.layout.addWidget(textContainer, 1, 1, 1, 1)
 
 	def Labeling(self):
 		# Here we will put any necessary text (Ex: the colon (:), title)
@@ -46,6 +54,7 @@ class MainWindow(QMainWindow):
 		font.setPointSize(30) # Set the size
 		title.setFont(font) # Setting the font
 		title.setStyleSheet("color: black;") # Font color		
+		title.setContentsMargins(0, 0, 0, 0)
 
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
