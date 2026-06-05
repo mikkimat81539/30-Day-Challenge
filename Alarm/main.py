@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.setWindowTitle("Alarm")
-		self.setFixedSize(QSize(500, 600))
+		self.setFixedSize(QSize(500, 400))
 		self.setStyleSheet("background-color: #ca82d1;") # Color format similar to css
 		self.container = QWidget()
 		self.setCentralWidget(self.container)
