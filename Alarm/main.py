@@ -16,28 +16,38 @@ class MainWindow(QMainWindow):
 		super().__init__()
 		self.setWindowTitle("Alarm")
 		self.setFixedSize(QSize(500, 600))
-		self.setStyleSheet("background-color: blue;") # Color format similar to css
+		self.setStyleSheet("background-color: #ca82d1;") # Color format similar to css
 		self.container = QWidget()
 		self.setCentralWidget(self.container)
+		self.layout = QGridLayout(self.container)
 
 	def Textbox(self):
 		# Here we will input our time
-		pass
+		hourField = QLineEdit()
+		minuteField = QLineEdit()
+
+		hourField.setMaxLength(2)
+		minuteField.setMaxLength(2)
+
+		hourField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+		minuteField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+		
+		hourField.setFixedSize(QSize(90, 50))
+		minuteField.setFixedSize(QSize(90, 50))
+
+		self.layout.addWidget(hourField, 1, 1)
+		self.layout.addWidget(minuteField, 1, 2)
 
 	def Labeling(self):
 		# Here we will put any necessary text (Ex: the colon (:), title)
-		layout = QVBoxLayout(self.container)
-
-		title = QLabel("ALARM")	
+		title = QLabel("24 HOUR ALARM")	
 
 		font = title.font() # initialize font
 		font.setPointSize(30) # Set the size
 		title.setFont(font) # Setting the font
-		title.setStyleSheet("color: white;") # Font color		
+		title.setStyleSheet("color: black;") # Font color		
 
-		title.setAlignment(Qt.AlignmentFlag.AlignHCenter) # Align Font
-
-		layout.addWidget(title)
+		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
@@ -51,8 +61,9 @@ screen = MainWindow()
 
 # DRAW WIDGETS
 screen.Labeling()
+screen.Textbox()
 
-screen.show() # IMPORTANT!!!!! Windows are hidden by default so you have to show it.
+screen.show() # Windows are hidden by default so you have to show it.
 
 # Start the event loop.
 app.exec()
