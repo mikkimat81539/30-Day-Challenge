@@ -1,7 +1,7 @@
 # CREATE AN ALARM THAT IS A GUI USING PYQT
 
 from PyQt6.QtCore import QSize, Qt
-from PyQt6.QtGui import QPalette, QColor
+from PyQt6.QtGui import QPalette, QIntValidator
 from PyQt6.QtWidgets import *
 
 import sys
@@ -32,6 +32,8 @@ class MainWindow(QMainWindow):
 			border-radius: 6px;
 		}"""
 
+		validator = QIntValidator(0, 59)
+
 		hourField = QLineEdit()
 
 		colon = QLabel(":")
@@ -40,6 +42,9 @@ class MainWindow(QMainWindow):
 		colon.setFont(font) # Setting the font
 
 		minuteField = QLineEdit()
+
+		hourField.setValidator(validator)
+		minuteField.setValidator(validator)
 
 		hourField.setStyleSheet(style)
 		minuteField.setStyleSheet(style)
