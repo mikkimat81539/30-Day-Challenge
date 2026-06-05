@@ -26,25 +26,46 @@ class MainWindow(QMainWindow):
 
 	def Textbox(self):
 		# Here we will input our time
+		style = """
+			QLineEdit {
+			border: 3px solid black;
+			border-radius: 6px;
+		}"""
+
 		hourField = QLineEdit()
+
+		colon = QLabel(":")
+		font = colon.font() # initialize font
+		font.setPointSize(30) # Set the size
+		colon.setFont(font) # Setting the font
+
 		minuteField = QLineEdit()
+
+		hourField.setStyleSheet(style)
+		minuteField.setStyleSheet(style)
 
 		hourField.setMaxLength(2)
 		minuteField.setMaxLength(2)
 
 		hourField.setFixedSize(QSize(90, 50))
 		minuteField.setFixedSize(QSize(90, 50))
+		colon.setFixedHeight(50)
 
-		hourField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
-		minuteField.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+		hourField.setAlignment(Qt.AlignmentFlag.AlignCenter)
+		minuteField.setAlignment(Qt.AlignmentFlag.AlignCenter)
+		colon.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
 
 		textContainer = QWidget()
 		hbox = QHBoxLayout(textContainer)
-		hbox.addWidget(hourField)
-		hbox.addWidget(minuteField)
-		hbox.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-		self.layout.addWidget(textContainer, 1, 1, 1, 1)
+		hbox.addWidget(hourField, alignment=Qt.AlignmentFlag.AlignVCenter)
+		hbox.addWidget(colon, alignment=Qt.AlignmentFlag.AlignVCenter)
+		hbox.addWidget(minuteField, alignment=Qt.AlignmentFlag.AlignVCenter)
+
+		hbox.setSpacing(8)
+
+		self.layout.addWidget(textContainer, 1, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
 	def Labeling(self):
 		# Here we will put any necessary text (Ex: the colon (:), title)
