@@ -1,8 +1,8 @@
 from pynput import mouse
 
-def on_move(x, y):
-	print(f'Pointer moved to ({x},{y})')
+def on_click(x, y, button, pressed):
+	print(f'Pressed')
 
-listener = mouse.Listener(on_move=on_move)
+listener = mouse.Listener(on_click=on_click)
 listener.start()
 listener.join()
