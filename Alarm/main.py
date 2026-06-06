@@ -11,6 +11,8 @@ import sys
 
 #sys.argv contains at least one element (the script name)
 
+# print(help(Button))
+
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -91,7 +93,6 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(save, 2, 1, alignment=Qt.AlignmentFlag.AlignTop)
 
 app = QApplication([])
-
 
 # Create a Qt widget, which will be our window.
 screen = MainWindow()
