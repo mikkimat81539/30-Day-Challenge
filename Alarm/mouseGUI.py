@@ -1,8 +1,6 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import Qt
 
-from pynput import mouse
-
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -13,6 +11,10 @@ class MainWindow(QMainWindow):
 		button = QPushButton("Pressed Me")
 		button.setFixedSize(100, 50)
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
+
+		# Check if button was click
+		button.setCheckable(True)
+		button.clicked.connect(lambda: print("Pressed"))
 	
 		self.setCentralWidget(button)
 
