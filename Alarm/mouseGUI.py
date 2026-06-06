@@ -1,6 +1,8 @@
 from PyQt6.QtWidgets import *
 from PyQt6.QtCore import Qt
 
+import datetime as dt
+
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
@@ -13,8 +15,13 @@ class MainWindow(QMainWindow):
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
 
 		# Check if button was click
-		button.setCheckable(True)
-		button.clicked.connect(lambda: print("Pressed"))
+		# button.setCheckable(True) # makes a button behave like a toggle switch instead of a normal push button.
+
+		# DATETIME
+		Hour = dt.datetime.now().hour
+		Minutes =  dt.datetime.now().minute
+
+		button.clicked.connect(lambda: print(f"{Hour}:{Minutes}"))
 	
 		self.setCentralWidget(button)
 
