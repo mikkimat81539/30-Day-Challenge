@@ -21,9 +21,10 @@ class MainWindow(QMainWindow):
 
 	def Text_Field(self):
 		inputField = QLineEdit()
-		inputField.setMaxLength(10)
+		inputField.setMaxLength(100)
 		inputField.setStyleSheet(""" 
 			QLineEdit{
+				font-size: 30px;
 				border: 3px solid black;
 			}
 		""")
