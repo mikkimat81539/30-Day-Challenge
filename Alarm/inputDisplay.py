@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
 		text = self.inputField.text()
 
 		self.inputLabel.setText(text)
+		self.inputField.clear()
 
 		self.layout.addWidget(self.inputLabel, 2, 0)
 
@@ -50,7 +51,7 @@ class MainWindow(QMainWindow):
 
 		# ADD BUTTON FUNCTIONALITY
 		button.clicked.connect(self.Labeling)
-	
+
 		# ADD TO LAYOUT
 		self.layout.addWidget(button, 1, 0, alignment=Qt.AlignmentFlag.AlignHCenter)
 
