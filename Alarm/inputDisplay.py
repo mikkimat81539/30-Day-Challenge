@@ -33,9 +33,9 @@ class MainWindow(QMainWindow):
 
 	def Labeling(self):
 		self.inputLabel = QLabel("")
-		text = self.inputField.text()
+		text = self.inputField.text() # .text() is used to retrieve string data from user-interface elements like inputs, labels, or buttons
 
-		self.inputLabel.setText(text)
+		self.inputLabel.setText(text) # .setText() used to set or change the text displayed by a widget
 		self.inputField.clear()
 
 		self.layout.addWidget(self.inputLabel, 2, 0)
