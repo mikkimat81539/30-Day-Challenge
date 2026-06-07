@@ -10,7 +10,14 @@ class MainWindow(QMainWindow):
 		self.setFixedSize(500, 300)
 		self.setStyleSheet("background-color: #9c8649;")
 
-		self.layout = QVBoxLayout()
+		self.layout = QGridLayout()
+		widget = QWidget()
+		widget.setLayout(self.layout)
+		self.layout.setContentsMargins(5, 5, 5, 5)
+		self.layout.setSpacing(20)
+		self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
+
+		self.setCentralWidget(widget)
 
 	def Text_Field(self):
 		inputField = QLineEdit()
@@ -21,21 +28,24 @@ class MainWindow(QMainWindow):
 			}
 		""")
 
-		inputField.setContentsMargins(0, 0, 0, 0)
-		self.layout.addWidget(inputField, alignment=Qt.AlignmentFlag.AlignTop)
+		self.layout.addWidget(inputField, 0, 0)
 		
-		widget = QWidget()
-		widget.setLayout(self.layout)
-		self.setCentralWidget(widget)
-
 	def Button(self):
-		pass
+		# If button is pressed display text inside input field
+
+		# CREATE BUTTON
+		button = QPushButton("Display Text")
+		button.setFixedSize(100, 50)
+	
+		# ADD TO LAYOUT
+		self.layout.addWidget(button, 1, 0, alignment=Qt.AlignmentFlag.AlignHCenter)
 
 app = QApplication([])
 
 screen = MainWindow()
 
 screen.Text_Field()
+screen.Button()
 
 screen.show()
 
