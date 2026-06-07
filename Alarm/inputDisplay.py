@@ -20,16 +20,25 @@ class MainWindow(QMainWindow):
 		self.setCentralWidget(widget)
 
 	def Text_Field(self):
-		inputField = QLineEdit()
-		inputField.setMaxLength(100)
-		inputField.setStyleSheet(""" 
+		self.inputField = QLineEdit()
+		self.inputField.setMaxLength(100)
+		self.inputField.setStyleSheet(""" 
 			QLineEdit{
 				font-size: 30px;
 				border: 3px solid black;
 			}
 		""")
 
-		self.layout.addWidget(inputField, 0, 0)
+		self.layout.addWidget(self.inputField, 0, 0)
+
+	def Labeling(self):
+		self.inputLabel = QLabel("")
+		text = self.inputField.text()
+
+		self.inputLabel.setText(text)
+
+		self.layout.addWidget(self.inputLabel, 2, 0)
+
 		
 	def Button(self):
 		# If button is pressed display text inside input field
@@ -38,6 +47,9 @@ class MainWindow(QMainWindow):
 		button = QPushButton("Display Text")
 		button.setFixedSize(100, 50)
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
+
+		# ADD BUTTON FUNCTIONALITY
+		button.clicked.connect(self.Labeling)
 	
 		# ADD TO LAYOUT
 		self.layout.addWidget(button, 1, 0, alignment=Qt.AlignmentFlag.AlignHCenter)
