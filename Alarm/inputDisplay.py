@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
 		# CREATE BUTTON
 		button = QPushButton("Display Text")
 		button.setFixedSize(100, 50)
+		button.setCursor(Qt.CursorShape.PointingHandCursor)
 	
 		# ADD TO LAYOUT
 		self.layout.addWidget(button, 1, 0, alignment=Qt.AlignmentFlag.AlignHCenter)
