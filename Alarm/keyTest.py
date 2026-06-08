@@ -1,4 +1,4 @@
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWidgets import QMainWindow, QApplication, QPushButton
 
@@ -20,6 +20,8 @@ class MainWindow(QMainWindow):
 
 		keyConnect = QShortcut(QKeySequence("a"), self)
 		keyConnect.activated.connect(button.click)
+#		button.setCheckable(True)
+#		button.setCheckable(False)
 
 		self.setCentralWidget(button)
 		
