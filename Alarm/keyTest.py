@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
 		button.clicked.connect(lambda: print("Button clicked"))
 
 		keyConnect = QShortcut(QKeySequence("a"), self)
-		keyConnect.activated.connect(button.click)
+		keyConnect.activated.connect(lambda: button.animateClick())
 #		button.setCheckable(True)
 #		button.setCheckable(False)
 
