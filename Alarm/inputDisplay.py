@@ -1,6 +1,7 @@
 # GOAL IS TO DISPLAY WHAT IS INPUTTED WHEN BUTTON IS PRESSED
 
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import *
+from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
 
 class MainWindow(QMainWindow):
@@ -20,14 +21,19 @@ class MainWindow(QMainWindow):
 		self.setCentralWidget(widget)
 
 	def Text_Field(self):
+		validator = QRegularExpressionValidator(
+			QRegularExpression(r"-?\d*")
+		)
 		self.inputField = QLineEdit()
-		self.inputField.setMaxLength(100)
+		self.inputField.setMaxLength(10000)
 		self.inputField.setStyleSheet(""" 
 			QLineEdit{
 				font-size: 30px;
 				border: 3px solid black;
 			}
 		""")
+		
+		self.inputField.setValidator(validator)	
 
 		self.layout.addWidget(self.inputField, 0, 0)
 
@@ -39,7 +45,6 @@ class MainWindow(QMainWindow):
 		self.inputField.clear()
 
 		self.layout.addWidget(self.inputLabel, 2, 0)
-
 		
 	def Button(self):
 		# If button is pressed display text inside input field
