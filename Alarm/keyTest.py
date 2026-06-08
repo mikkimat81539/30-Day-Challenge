@@ -20,8 +20,6 @@ class MainWindow(QMainWindow):
 
 		keyConnect = QShortcut(QKeySequence("a"), self)
 		keyConnect.activated.connect(lambda: button.animateClick())
-#		button.setCheckable(True)
-#		button.setCheckable(False)
 
 		self.setCentralWidget(button)
 		
