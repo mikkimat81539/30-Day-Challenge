@@ -1,5 +1,5 @@
 from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QKeyEvent, QCursor
+from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWidgets import QMainWindow, QApplication, QPushButton
 
 class MainWindow(QMainWindow):
@@ -14,18 +14,14 @@ class MainWindow(QMainWindow):
 		button = QPushButton("Press Me")
 		button.setFixedSize(100, 50)
 	
-#		button.setStyleSheet("""
-#			QPushButton {
-#				border: 3px solid black;
-#			}
-#		""")	
-
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
+		
+		button.clicked.connect(lambda: print("Button clicked"))
 
-		button.clicked.connect(lambda: print("Pressed"))
+		keyConnect = QShortcut(QKeySequence("a"), self)
+		keyConnect.activated.connect(button.click)
 
 		self.setCentralWidget(button)
-
 		
 
 # init application
