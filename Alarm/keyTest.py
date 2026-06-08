@@ -22,6 +22,8 @@ class MainWindow(QMainWindow):
 
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
 
+		button.clicked.connect(lambda: print("Pressed"))
+
 		self.setCentralWidget(button)
 
 		
