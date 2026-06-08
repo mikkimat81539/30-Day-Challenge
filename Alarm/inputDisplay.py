@@ -20,12 +20,14 @@ class MainWindow(QMainWindow):
 
 		self.setCentralWidget(widget)
 
+		self.labelList = []
+
 	def Text_Field(self):
-		validator = QRegularExpressionValidator(
-			QRegularExpression(r"-?\d*")
-		)
+#		validator = QRegularExpressionValidator(
+#			QRegularExpression(r"-?\d*")
+#		)
 		self.inputField = QLineEdit()
-		self.inputField.setMaxLength(10000)
+		self.inputField.setMaxLength(5000)
 		self.inputField.setStyleSheet(""" 
 			QLineEdit{
 				font-size: 30px;
@@ -33,7 +35,7 @@ class MainWindow(QMainWindow):
 			}
 		""")
 		
-		self.inputField.setValidator(validator)	
+		# self.inputField.setValidator(validator)	
 
 		self.layout.addWidget(self.inputField, 0, 0)
 
@@ -46,6 +48,9 @@ class MainWindow(QMainWindow):
 
 		self.layout.addWidget(self.inputLabel, 2, 0)
 		
+		self.labelList.append(self.inputLabel.text())
+		print(self.labelList)
+
 	def Button(self):
 		# If button is pressed display text inside input field
 
