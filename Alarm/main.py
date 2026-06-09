@@ -1,5 +1,9 @@
 # CREATE AN ALARM THAT IS A GUI USING PYQT
 
+"""Create Delete buttons for all times to delete from UI and labelList.
+Figure out how to prevent UI and list from adding additinoal times past 6"""
+
+
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QPalette, QIntValidator
 from PyQt6.QtWidgets import *
