@@ -26,6 +26,9 @@ class MainWindow(QMainWindow):
 		self.layout.setContentsMargins(0, 0, 0, 0)
 		self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
+		self.labelList = []
+		self.rowCount = 3
+
 	def Textbox(self):
 		# Here we will input our time
 		style = """
@@ -36,39 +39,39 @@ class MainWindow(QMainWindow):
 
 		validator = QIntValidator(0, 59)
 
-		hourField = QLineEdit()
+		self.hourField = QLineEdit()
 
 		colon = QLabel(":")
 		font = colon.font() # initialize font
 		font.setPointSize(30) # Set the size
 		colon.setFont(font) # Setting the font
 
-		minuteField = QLineEdit()
+		self.minuteField = QLineEdit()
 
-		hourField.setValidator(validator)
-		minuteField.setValidator(validator)
+		self.hourField.setValidator(validator)
+		self.minuteField.setValidator(validator)
 
-		hourField.setStyleSheet(style)
-		minuteField.setStyleSheet(style)
+		self.hourField.setStyleSheet(style)
+		self.minuteField.setStyleSheet(style)
 
-		hourField.setMaxLength(2)
-		minuteField.setMaxLength(2)
+		self.hourField.setMaxLength(2)
+		self.minuteField.setMaxLength(2)
 
-		hourField.setFixedSize(QSize(90, 50))
-		minuteField.setFixedSize(QSize(90, 50))
+		self.hourField.setFixedSize(QSize(90, 50))
+		self.minuteField.setFixedSize(QSize(90, 50))
 		colon.setFixedHeight(50)
 
-		hourField.setAlignment(Qt.AlignmentFlag.AlignCenter)
-		minuteField.setAlignment(Qt.AlignmentFlag.AlignCenter)
+		self.hourField.setAlignment(Qt.AlignmentFlag.AlignCenter)
+		self.minuteField.setAlignment(Qt.AlignmentFlag.AlignCenter)
 		colon.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
 
 		textContainer = QWidget()
 		hbox = QHBoxLayout(textContainer)
 
-		hbox.addWidget(hourField, alignment=Qt.AlignmentFlag.AlignVCenter)
+		hbox.addWidget(self.hourField, alignment=Qt.AlignmentFlag.AlignVCenter)
 		hbox.addWidget(colon, alignment=Qt.AlignmentFlag.AlignVCenter)
-		hbox.addWidget(minuteField, alignment=Qt.AlignmentFlag.AlignVCenter)
+		hbox.addWidget(self.minuteField, alignment=Qt.AlignmentFlag.AlignVCenter)
 
 		hbox.setSpacing(8)
 
@@ -86,11 +89,29 @@ class MainWindow(QMainWindow):
 
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
+	def inputField(self):
+		hourLabel = QLabel("")	
+		text = self.hourField.text()
+		hourLabel.setText(text)
+
+		self.hourField.clear()
+
+		font = hourLabel.font() # initialize font
+		font.setPointSize(20) # Set the size
+		hourLabel.setFont(font) # Setting the font
+		hourLabel.setStyleSheet("color: black;") # Font color		
+
+		self.layout.addWidget(hourLabel, self.rowCount, 0)
+	
+		self.rowCount = self.rowCount + 1
+
 	def Buttons(self):
 		# Here will be the buttons to save alarm
 		save = QPushButton("Set Alarm")
 		save.setCursor(Qt.CursorShape.PointingHandCursor)
 		self.layout.addWidget(save, 2, 1, alignment=Qt.AlignmentFlag.AlignTop)
+
+		save.clicked.connect(self.inputField)
 
 app = QApplication([])
 
