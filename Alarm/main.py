@@ -112,6 +112,9 @@ class MainWindow(QMainWindow):
 		self.labelList.append(timeLabel.text())
 		print(self.labelList)
 
+		if len(self.labelList) >= 6:
+			self.labelList.clear()
+			self.rowCount = 3
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
