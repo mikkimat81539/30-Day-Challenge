@@ -4,7 +4,7 @@ from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QPalette, QIntValidator
 from PyQt6.QtWidgets import *
 
-import sys
+import sys, re
 
 # You need one (and only one) QApplication instance per application.
 # app = QApplication(sys.argv) # # Pass in sys.argv to allow command line arguments for your app.
@@ -90,12 +90,16 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
-		timeLabel = QLabel(f"")	
-
 		hourText = self.hourField.text()
 		minText = self.minuteField.text()
 
-		timeLabel.setText(f"{self.hourField.text()}:{self.minuteField.text()}")
+		if hourText == "" or minText == "":
+			return
+
+		timeLabel = QLabel(f"{hourText}:{minText}")
+
+		self.layout.addWidget(timeLabel, self.rowCount, 0)
+		self.rowCount += 1
 
 		self.hourField.clear()
 		self.minuteField.clear()
@@ -104,10 +108,10 @@ class MainWindow(QMainWindow):
 		font.setPointSize(20) # Set the size
 		timeLabel.setFont(font) # Setting the font
 		timeLabel.setStyleSheet("color: black;") # Font color		
+		
+		self.labelList.append(timeLabel.text())
+		print(self.labelList)
 
-		self.layout.addWidget(timeLabel, self.rowCount, 0)
-	
-		self.rowCount = self.rowCount + 1
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
