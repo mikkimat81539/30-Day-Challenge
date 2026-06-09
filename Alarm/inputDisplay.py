@@ -22,6 +22,8 @@ class MainWindow(QMainWindow):
 
 		self.labelList = []
 
+		self.rowCount = 2
+
 	def Text_Field(self):
 #		validator = QRegularExpressionValidator(
 #			QRegularExpression(r"-?\d*")
@@ -46,15 +48,15 @@ class MainWindow(QMainWindow):
 
 		self.inputLabel.setText(text) # .setText() used to set or change the text displayed by a widget
 		self.inputField.clear()
-
-		self.layout.addWidget(self.inputLabel, 2, 0)
+		
+		self.layout.addWidget(self.inputLabel, self.rowCount, 0)
+		self.rowCount = self.rowCount + 1
 		
 		self.labelList.append(self.inputLabel.text())
 	
 		if "" in self.labelList:
 			self.labelList.remove("")
-
-		print(self.labelList)
+			self.rowCount = self.rowCount - 1
 
 	def Button(self):
 		# If button is pressed display text inside input field
