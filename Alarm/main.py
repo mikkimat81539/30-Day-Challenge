@@ -96,6 +96,12 @@ class MainWindow(QMainWindow):
 		if hourText == "" or minText == "":
 			return
 
+		elif int(hourText) >= 24 or int(minText) >= 60:
+			return
+
+		elif len(minText) != 2:
+			return
+
 		timeLabel = QLabel(f"{hourText}:{minText}")
 
 		self.layout.addWidget(timeLabel, self.rowCount, 0)
