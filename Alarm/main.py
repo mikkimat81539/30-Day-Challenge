@@ -74,7 +74,7 @@ class MainWindow(QMainWindow):
 
 		self.layout.addWidget(textContainer, 1, 1, alignment=Qt.AlignmentFlag.AlignCenter)
 
-	def Labeling(self):
+	def Title_Label(self):
 		# Here we will put any necessary text (Ex: the colon (:), title)
 		title = QLabel("24 HOUR ALARM")	
 
@@ -98,7 +98,7 @@ app = QApplication([])
 screen = MainWindow()
 
 # DRAW WIDGETS
-screen.Labeling()
+screen.Title_Label()
 screen.Textbox()
 screen.Buttons()
 
