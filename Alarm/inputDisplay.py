@@ -58,6 +58,11 @@ class MainWindow(QMainWindow):
 			self.labelList.remove("")
 			self.rowCount = self.rowCount - 1
 
+		if len(self.labelList) >= 4:
+			self.rowCount = 2
+			self.labelList.clear()
+
+
 	def Button(self):
 		# If button is pressed display text inside input field
 
