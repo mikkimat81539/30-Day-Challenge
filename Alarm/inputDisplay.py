@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
 #			QRegularExpression(r"-?\d*")
 #		)
 		self.inputField = QLineEdit()
+
 		self.inputField.setMaxLength(5000)
 		self.inputField.setStyleSheet(""" 
 			QLineEdit{
@@ -49,6 +50,10 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(self.inputLabel, 2, 0)
 		
 		self.labelList.append(self.inputLabel.text())
+	
+		if "" in self.labelList:
+			self.labelList.remove("")
+
 		print(self.labelList)
 
 	def Button(self):
@@ -61,6 +66,8 @@ class MainWindow(QMainWindow):
 
 		# ADD BUTTON FUNCTIONALITY
 		button.clicked.connect(self.Labeling)
+		keyConnect = QShortcut(QKeySequence("A"), self)
+		keyConnect.activated.connect(lambda: button.animateClick())
 
 		# ADD TO LAYOUT
 		self.layout.addWidget(button, 1, 0, alignment=Qt.AlignmentFlag.AlignHCenter)
