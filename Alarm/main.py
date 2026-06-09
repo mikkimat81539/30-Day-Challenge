@@ -23,7 +23,7 @@ class MainWindow(QMainWindow):
 		self.setCentralWidget(self.container)
 
 		self.layout = QGridLayout(self.container)
-		self.layout.setContentsMargins(0, 0, 0, 0)
+		self.layout.setContentsMargins(5, 5, 5, 5)
 		self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
 		self.labelList = []
@@ -90,18 +90,22 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
-		hourLabel = QLabel("")	
-		text = self.hourField.text()
-		hourLabel.setText(text)
+		timeLabel = QLabel(f"")	
+
+		hourText = self.hourField.text()
+		minText = self.minuteField.text()
+
+		timeLabel.setText(f"{self.hourField.text()}:{self.minuteField.text()}")
 
 		self.hourField.clear()
+		self.minuteField.clear()
 
-		font = hourLabel.font() # initialize font
+		font = timeLabel.font() # initialize font
 		font.setPointSize(20) # Set the size
-		hourLabel.setFont(font) # Setting the font
-		hourLabel.setStyleSheet("color: black;") # Font color		
+		timeLabel.setFont(font) # Setting the font
+		timeLabel.setStyleSheet("color: black;") # Font color		
 
-		self.layout.addWidget(hourLabel, self.rowCount, 0)
+		self.layout.addWidget(timeLabel, self.rowCount, 0)
 	
 		self.rowCount = self.rowCount + 1
 
