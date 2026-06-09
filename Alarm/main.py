@@ -94,6 +94,13 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
+		if len(self.labelList) >= 2:
+			self.popup = QWidget()
+			self.popup.setWindowFlags(Qt.WindowType.Popup)
+			self.popup.setFixedSize(QSize(400, 150))
+			self.popup.show()
+
+
 		hourText = self.hourField.text()
 		minText = self.minuteField.text()
 
@@ -121,10 +128,6 @@ class MainWindow(QMainWindow):
 		
 		self.labelList.append(timeLabel.text())
 		print(self.labelList)
-
-		if len(self.labelList) >= 6:
-			self.labelList.clear()
-			self.rowCount = 3
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
