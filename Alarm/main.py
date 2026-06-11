@@ -94,7 +94,7 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
-		if len(self.labelList) >= 1:
+		if len(self.labelList) >= 6:
 			self.popup = QWidget()
 			self.popup.setWindowFlags(Qt.WindowType.Dialog)
 			self.popup.setFixedSize(QSize(400, 150))
