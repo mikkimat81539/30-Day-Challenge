@@ -94,10 +94,22 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
-		if len(self.labelList) >= 2:
+		if len(self.labelList) >= 1:
 			self.popup = QWidget()
 			self.popup.setWindowFlags(Qt.WindowType.Dialog)
 			self.popup.setFixedSize(QSize(400, 150))
+
+			popup_label = QLabel("Maximum alarms you can set are 6")
+		
+			popup_font = popup_label.font() # initialize font
+			popup_font.setPointSize(18) # Set the size
+			popup_label.setFont(popup_font)
+	
+			popup_layout = QVBoxLayout()
+			popup_layout.addWidget(popup_label, alignment=Qt.AlignmentFlag.AlignHCenter)
+
+			self.popup.setLayout(popup_layout)
+
 			self.popup.show()
 
 
