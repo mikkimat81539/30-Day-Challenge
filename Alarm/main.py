@@ -1,6 +1,7 @@
 # CREATE AN ALARM THAT IS A GUI USING PYQT
 
-"""Create Delete buttons for all times to delete from UI and labelList."""
+"""I want times in UI sorted
+Delete buttons to remove times associated with row when pressed"""
 
 
 from PyQt6.QtCore import QSize, Qt
@@ -20,7 +21,7 @@ class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.setWindowTitle("Alarm")
-		self.setFixedSize(QSize(500, 400))
+		self.setFixedSize(QSize(500, 410))
 		self.setStyleSheet("background-color: #9c8649;") # Color format similar to css
 		self.container = QWidget()
 		self.setCentralWidget(self.container)
@@ -129,6 +130,9 @@ class MainWindow(QMainWindow):
 			return
 
 		timeLabel = QLabel(f"{hourText}:{minText}") # Label for time
+		deleteBtn = QPushButton("Delete")
+		deleteBtn.setFixedSize(QSize(100, 20))
+		deleteBtn.setCursor(Qt.CursorShape.PointingHandCursor)
 
 		if len(self.labelList) >= 6: # If alarms set are greater than 6 give error
 			print("To Many Alarms")
@@ -140,6 +144,7 @@ class MainWindow(QMainWindow):
 			print(self.time_sort)
 
 			self.layout.addWidget(timeLabel, self.rowCount, 0)
+			self.layout.addWidget(deleteBtn, self.rowCount, 1)
 			self.rowCount += 1 # Each label goes to the next row
 
 			# Clear input fields
