@@ -1,7 +1,9 @@
 # CREATE AN ALARM THAT IS A GUI USING PYQT
 
 """I want times in UI sorted
-Delete buttons to remove times associated with row when pressed"""
+I want delete buttons to remove times associated with row when pressed
+
+EX: if I press delete button in row 4, row 4 should be deleted"""
 
 
 from PyQt6.QtCore import QSize, Qt
@@ -157,7 +159,6 @@ class MainWindow(QMainWindow):
 			timeLabel.setFont(font) # Setting the font
 			timeLabel.setStyleSheet("color: black;") # Font color		
 	
-
 	def Buttons(self):
 		# Here will be the buttons to save alarm
 		save = QPushButton("Set Alarm")
