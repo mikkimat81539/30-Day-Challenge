@@ -23,7 +23,6 @@ class MainWindow(QMainWindow):
 
 		self.setCentralWidget(button)
 		
-
 # init application
 app = QApplication([])
 
