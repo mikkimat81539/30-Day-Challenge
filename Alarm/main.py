@@ -96,7 +96,7 @@ class MainWindow(QMainWindow):
 	def inputField(self):
 		if len(self.labelList) >= 2:
 			self.popup = QWidget()
-			self.popup.setWindowFlags(Qt.WindowType.Popup)
+			self.popup.setWindowFlags(Qt.WindowType.Dialog)
 			self.popup.setFixedSize(QSize(400, 150))
 			self.popup.show()
 
