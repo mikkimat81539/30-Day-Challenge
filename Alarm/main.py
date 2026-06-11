@@ -127,19 +127,25 @@ class MainWindow(QMainWindow):
 
 		timeLabel = QLabel(f"{hourText}:{minText}")
 
-		self.layout.addWidget(timeLabel, self.rowCount, 0)
-		self.rowCount += 1
+		if len(self.labelList) >= 6:
+			print("To Many Alarms")
+			return
+		else:
+			self.labelList.append(timeLabel.text())
+			print(self.labelList)
 
-		self.hourField.clear()
-		self.minuteField.clear()
 
-		font = timeLabel.font() # initialize font
-		font.setPointSize(20) # Set the size
-		timeLabel.setFont(font) # Setting the font
-		timeLabel.setStyleSheet("color: black;") # Font color		
-		
-		self.labelList.append(timeLabel.text())
-		print(self.labelList)
+			self.layout.addWidget(timeLabel, self.rowCount, 0)
+			self.rowCount += 1
+
+			self.hourField.clear()
+			self.minuteField.clear()
+
+			font = timeLabel.font() # initialize font
+			font.setPointSize(20) # Set the size
+			timeLabel.setFont(font) # Setting the font
+			timeLabel.setStyleSheet("color: black;") # Font color		
+	
 
 	def Buttons(self):
 		# Here will be the buttons to save alarm
