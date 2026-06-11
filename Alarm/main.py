@@ -1,14 +1,13 @@
 # CREATE AN ALARM THAT IS A GUI USING PYQT
 
-"""Create Delete buttons for all times to delete from UI and labelList.
-Figure out how to prevent UI and list from adding additinoal times past 6"""
+"""Create Delete buttons for all times to delete from UI and labelList."""
 
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtGui import QPalette, QIntValidator
 from PyQt6.QtWidgets import *
 
-import sys, re
+import datetime
 
 # You need one (and only one) QApplication instance per application.
 # app = QApplication(sys.argv) # # Pass in sys.argv to allow command line arguments for your app.
@@ -31,6 +30,9 @@ class MainWindow(QMainWindow):
 		self.layout.setAlignment(Qt.AlignmentFlag.AlignTop)
 
 		self.labelList = []
+
+		# self.time_sort = sorted(self.labelList, key=lambda t: datetime.strptime(t, "%H:%M"))
+
 		self.rowCount = 3
 
 	def Textbox(self):
@@ -94,6 +96,7 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(title, 0, 0, 1, 3, alignment=Qt.AlignmentFlag.AlignTop | Qt.AlignmentFlag.AlignHCenter)
 
 	def inputField(self):
+		# POPUP
 		if len(self.labelList) >= 6:
 			self.popup = QWidget()
 			self.popup.setWindowFlags(Qt.WindowType.Dialog)
@@ -132,7 +135,9 @@ class MainWindow(QMainWindow):
 			return
 		else:
 			self.labelList.append(timeLabel.text())
-			print(self.labelList)
+			self.time_sort = sorted(self.labelList, key=lambda t: datetime.datetime.strptime(t, "%H:%M"))
+
+			print(self.time_sort)
 
 
 			self.layout.addWidget(timeLabel, self.rowCount, 0)
