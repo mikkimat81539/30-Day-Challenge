@@ -116,36 +116,37 @@ class MainWindow(QMainWindow):
 			self.popup.show()
 
 
-		hourText = self.hourField.text()
-		minText = self.minuteField.text()
+		hourText = self.hourField.text() # Hour Field input
+		minText = self.minuteField.text() # Minute field input
 
-		if hourText == "" or minText == "":
+		if hourText == "" or minText == "": # if input fields are input
 			return
 
-		elif int(hourText) >= 24 or int(minText) >= 60:
+		elif int(hourText) >= 24 or int(minText) >= 60: # if numbers are greater than hour of day
 			return
 
-		elif len(minText) != 2:
+		elif len(minText) != 2: # if input is not 2 digits
 			return
 
-		timeLabel = QLabel(f"{hourText}:{minText}")
+		timeLabel = QLabel(f"{hourText}:{minText}") # Label for time
 
-		if len(self.labelList) >= 6:
+		if len(self.labelList) >= 6: # If alarms set are greater than 6 give error
 			print("To Many Alarms")
 			return
 		else:
-			self.labelList.append(timeLabel.text())
-			self.time_sort = sorted(self.labelList, key=lambda t: datetime.datetime.strptime(t, "%H:%M"))
+			self.labelList.append(timeLabel.text()) # Add times to list
+			self.time_sort = sorted(self.labelList, key=lambda t: datetime.datetime.strptime(t, "%H:%M")) # Sort times
 
 			print(self.time_sort)
 
-
 			self.layout.addWidget(timeLabel, self.rowCount, 0)
-			self.rowCount += 1
+			self.rowCount += 1 # Each label goes to the next row
 
+			# Clear input fields
 			self.hourField.clear()
 			self.minuteField.clear()
 
+			# Font style for labels
 			font = timeLabel.font() # initialize font
 			font.setPointSize(20) # Set the size
 			timeLabel.setFont(font) # Setting the font
