@@ -5,7 +5,7 @@ from PyQt6.QtCore import Qt
 class MainWindow(QMainWindow):
 	def __init__(self):
 		super().__init__()
-		self.setWindowTitle("Delete Button Test") # Title of screen
+		self.setWindowTitle("Timer") # Title of screen
 		self.setFixedSize(500, 300) # Set screen size
 		self.setStyleSheet("background-color: #99c3c7")
 
@@ -16,7 +16,7 @@ class MainWindow(QMainWindow):
 		central.setLayout(self.layout) # set layout
 
 	def Button(self):
-		button = QPushButton("Delete button")
+		button = QPushButton("Set Timer")
 		button.setFixedSize(150, 20)
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
 
@@ -26,7 +26,7 @@ app = QApplication([]) # initalize application
 
 screen = MainWindow() # define screen
 
-# Draw Widets ont screen
+# Draw Widgets ont screen
 screen.Button()
 
 screen.show() # show screen
