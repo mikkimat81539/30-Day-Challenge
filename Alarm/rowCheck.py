@@ -32,11 +32,16 @@ class MainWindow(QMainWindow):
 		button.setFixedSize(150, 20)
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-		# button.clicked.connect(self.Button)
-
 		self.layout.addWidget(button, self.rowCount, 1)
 		self.rowCount += 1
 
+		index = self.layout.indexOf(button) # Where is the button stored
+
+		# This allows me to grab based on row, col, spans
+		row, column, row_span, col_span = self.layout.getItemPosition(index)
+
+		print(f"The widget is at row index: {row}")
+	
 app = QApplication([]) # initalize application
 
 screen = MainWindow() # define screen
