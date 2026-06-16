@@ -34,6 +34,13 @@ class MainWindow(QMainWindow):
 			i.setCursor(Qt.CursorShape.PointingHandCursor)
 			self.layout.addWidget(i)	
 
+			i.clicked.connect(self.button_test)
+	
+	def button_test(self):
+		button = self.sender()
+
+		print(button.text())
+
 app = QApplication([])
 
 screen = MainWindow()
