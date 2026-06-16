@@ -5,7 +5,7 @@
 # When BTN 3 is clicked resize to 500, 200
 
 from PyQt6.QtWidgets import QWidget, QMainWindow, QPushButton, QApplication, QHBoxLayout
-
+from PyQt6.QtCore import Qt
 
 class MainWindow(QMainWindow):
 	def __init__(self):
@@ -23,8 +23,6 @@ class MainWindow(QMainWindow):
 		self.widget.setLayout(self.layout)
 		self.setCentralWidget(self.widget)
 
-		self.colCount = 0
-
 	def Button(self):
 		unoBtn = QPushButton("UNO")
 		poopBtn = QPushButton("POOP")
@@ -33,8 +31,8 @@ class MainWindow(QMainWindow):
 		buttonList = [unoBtn, poopBtn, resizeBtn]
 
 		for i in buttonList:
+			i.setCursor(Qt.CursorShape.PointingHandCursor)
 			self.layout.addWidget(i)	
-			self.colCount += 1
 
 app = QApplication([])
 
