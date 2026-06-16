@@ -18,22 +18,31 @@ class MainWindow(QMainWindow):
 		central.setLayout(self.layout) # set layout
 		self.rowCount = 0
 
-	def Button(self):
+	def Add_Button(self):
+		button = QPushButton("Add Button")
+		button.setFixedSize(150, 20)
+		button.setCursor(Qt.CursorShape.PointingHandCursor)
+
+		button.clicked.connect(self.Delete_Button)
+
+		self.layout.addWidget(button, 0, 0)
+
+	def Delete_Button(self):
 		button = QPushButton("Delete Button")
 		button.setFixedSize(150, 20)
 		button.setCursor(Qt.CursorShape.PointingHandCursor)
 
-		button.clicked.connect(self.Button)
+		# button.clicked.connect(self.Button)
 
-		self.layout.addWidget(button, self.rowCount, 0)
+		self.layout.addWidget(button, self.rowCount, 1)
 		self.rowCount += 1
 
 app = QApplication([]) # initalize application
 
 screen = MainWindow() # define screen
 
-# Draw Widgets ont screen
-screen.Button()
+# Draw Widgets onto screen
+screen.Add_Button()
 
 screen.show() # show screen
 
