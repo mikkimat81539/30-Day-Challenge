@@ -35,13 +35,21 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(button, self.rowCount, 1)
 		self.rowCount += 1
 
-		index = self.layout.indexOf(button) # Where is the button stored
+#		index = self.layout.indexOf(button) # Where is the button stored
+#
+#		# This allows me to grab based on row, col, spans
+#		row, column, row_span, col_span = self.layout.getItemPosition(index)
 
-		# This allows me to grab based on row, col, spans
-		row, column, row_span, col_span = self.layout.getItemPosition(index)
+		for i in range(self.rowCount):
+			button.clicked.connect(self.remove_btn)
 
-		button.clicked.connect(lambda: print(row))
+	def remove_btn(self):
+		button = self.sender() # button that was clicked
 		
+		self.layout.removeWidget(button) # remove from layout	
+
+		button.deleteLater() # delete widget
+	
 	
 app = QApplication([]) # initalize application
 
