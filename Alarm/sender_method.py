@@ -16,6 +16,15 @@ class MainWindow(QMainWindow):
 		# print(self.width()) # This allows me to grab the width of my widget
 		# print(self.height()) # This allows me to grab the height of my widget
 
+		self.layout = QHBoxLayout()
+
+		self.widget = QWidget()
+
+		self.widget.setLayout(self.layout)
+		self.setCentralWidget(self.widget)
+
+		self.colCount = 0
+
 	def Button(self):
 		unoBtn = QPushButton("UNO")
 		poopBtn = QPushButton("POOP")
@@ -24,7 +33,8 @@ class MainWindow(QMainWindow):
 		buttonList = [unoBtn, poopBtn, resizeBtn]
 
 		for i in buttonList:
-			pass
+			self.layout.addWidget(i)	
+			self.colCount += 1
 
 app = QApplication([])
 
