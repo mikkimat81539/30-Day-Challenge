@@ -40,7 +40,8 @@ class MainWindow(QMainWindow):
 		# This allows me to grab based on row, col, spans
 		row, column, row_span, col_span = self.layout.getItemPosition(index)
 
-		print(f"The widget is at row index: {row}")
+		button.clicked.connect(lambda: print(row))
+		
 	
 app = QApplication([]) # initalize application
 
