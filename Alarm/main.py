@@ -125,8 +125,9 @@ class MainWindow(QMainWindow):
 		if hourText == "" or minText == "": # if input fields are input
 			return
 
-		elif hourText[0] == "0" :
-			hourText = hourText[1:]
+		elif hourText[0] == "0":
+			hourText = str(int(hourText))
+			# hourText = hourText[1:]
 
 		elif int(hourText) >= 24 or int(minText) >= 60: # if numbers are greater than hour of day
 			return
