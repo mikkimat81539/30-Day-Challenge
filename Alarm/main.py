@@ -139,8 +139,8 @@ class MainWindow(QMainWindow):
 		deleteBtn.setFixedSize(QSize(100, 20))
 		deleteBtn.setCursor(Qt.CursorShape.PointingHandCursor)
 
+
 		if len(self.labelList) >= 6: # If alarms set are greater than 6 give error
-			print("To Many Alarms")
 			return
 		else:
 			self.labelList.append(timeLabel.text()) # Add times to list
@@ -161,6 +161,10 @@ class MainWindow(QMainWindow):
 			font.setPointSize(20) # Set the size
 			timeLabel.setFont(font) # Setting the font
 			timeLabel.setStyleSheet("color: black;") # Font color		
+
+
+			# Deleting Times
+			deleteBtn.clicked.connect(self.remove_time)
 	
 	def Buttons(self):
 		# Here will be the buttons to save alarm
@@ -169,6 +173,32 @@ class MainWindow(QMainWindow):
 		self.layout.addWidget(save, 2, 1, alignment=Qt.AlignmentFlag.AlignTop)
 
 		save.clicked.connect(self.inputField)
+
+	def remove_time(self):
+		button = self.sender()
+
+		idx = self.layout.indexOf(button)	
+	
+		row, column, row_span, column_span = self.layout.getItemPosition(idx)
+
+
+		for col in range(2):
+			item = self.layout.itemAtPosition(row, col)
+
+			if item is not None:
+				widget = item.widget()
+				self.layout.removeWidget(widget)
+				widget.deleteLater()
+			
+		try:
+			list_index = row - 3
+			self.labelList.pop(list_index)
+
+			print(self.labelList)
+
+		except IndexError:
+			self.labelList = []
+			
 
 app = QApplication([])
 
